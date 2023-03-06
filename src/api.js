@@ -3,6 +3,21 @@ const serverless = require("serverless-http");
 
 const app = express();
 const router = express.Router();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+require("dotenv").config();
+
+mongoose
+  .connect(process.env.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to database!");
+  })
+  .catch((err) => {
+    console.log("Failed to connect to database", err);
+  });
 
 router.get("/", (req, res) => {
   res.json({
