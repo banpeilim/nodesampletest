@@ -26,14 +26,6 @@ router.get("/", (req, res) => {
 
 app.use(`/.netlify/functions/api`, router);
 
-// // Middlewares
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-
-// // Routes
-// const routes = require("../routes");
-// app.use(`/.netlify/functions/api`, routes);
-
 module.exports = app;
 module.exports.handler = serverless(app);
 
